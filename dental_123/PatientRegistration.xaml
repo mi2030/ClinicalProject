@@ -1,0 +1,47 @@
+﻿<Page x:Class="dental_123.PatientRegistration"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:dental_123"
+      mc:Ignorable="d" 
+              Title="Patient Data Entry" Height="450" Width="600">
+
+    <Grid Margin="20,0,0,20" Background="#FFC0C2C4">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="148"/>
+            <RowDefinition Height="33.96"/>
+        </Grid.RowDefinitions>
+
+        <Label Content="First Name:" VerticalAlignment="Top" Margin="0,9,0,0" Grid.Row="7"/>
+        <TextBox Grid.Row="7" x:Name="txtFirstName" Margin="66,15,325,0" VerticalAlignment="Top" Height="16"/>
+
+        <Label Content="Last Name:" Grid.Row="7" VerticalAlignment="Top" Margin="0,35,0,0"/>
+        <TextBox Grid.Row="7" x:Name="txtLastName" Margin="66,40,325,0" VerticalAlignment="Top" Height="16" TextChanged="txtLastName_TextChanged"/>
+
+        <Label Content="Age:" Grid.Row="7" VerticalAlignment="Center" Margin="10,0,82,0"/>
+        <TextBox Grid.Row="7" x:Name="txtAge" Margin="66,68,471,0" VerticalAlignment="Top" Height="23" TextChanged="txtAge_TextChanged"/>
+
+        <Label Content="Gender:" Grid.Row="7" VerticalAlignment="Top" Margin="142,67,-50,0"/>
+        <TextBox Grid.Row="7" x:Name="txtGender" Margin="211,70,326,0" VerticalAlignment="Top" Height="23" TextChanged="txtAge_TextChanged"/>
+
+
+        <Label Content="Phone:" Grid.Row="7" VerticalAlignment="Top" Margin="0,98,0,0"/>
+        <TextBox Grid.Row="7" x:Name="txtPhone" Margin="66,104,343,0" VerticalAlignment="Top" Height="20"/>
+
+        <Label Content="Allergies:" Grid.Row="7" VerticalAlignment="Top" Margin="0,126,0,0" Grid.RowSpan="2"/>
+        <TextBox Grid.Row="7" x:Name="txtAllergies" Margin="66,139,343,0" VerticalAlignment="Top" Height="19" Grid.RowSpan="2"/>
+
+
+
+
+        <Button Grid.Row="8" Content="Submit" Margin="10,14,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Click="SubmitButton_Click"/>
+    </Grid>
+</Page>

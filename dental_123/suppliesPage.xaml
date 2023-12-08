@@ -1,0 +1,376 @@
+﻿<Window x:Class="dental_123.suppliesPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:dental_123"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+     Title="MainWindow" Height="545" Width="968.958" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" WindowStyle="None" AllowsTransparency="True" Background="Transparent">
+
+    <Window.Resources>
+        <Style x:Key="FocusVisual">
+            <Setter Property="Control.Template">
+                <Setter.Value>
+                    <ControlTemplate>
+                        <Rectangle Margin="2" SnapsToDevicePixels="true" Stroke="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}" StrokeThickness="1" StrokeDashArray="1 2"/>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <SolidColorBrush x:Key="Button.Static.Background" Color="#FFDDDDDD"/>
+        <SolidColorBrush x:Key="Button.Static.Border" Color="#FF707070"/>
+        <SolidColorBrush x:Key="Button.MouseOver.Background" Color="#FFBEE6FD"/>
+        <SolidColorBrush x:Key="Button.MouseOver.Border" Color="#FF3C7FB1"/>
+        <SolidColorBrush x:Key="Button.Pressed.Background" Color="#FFC4E5F6"/>
+        <SolidColorBrush x:Key="Button.Pressed.Border" Color="#FF2C628B"/>
+        <SolidColorBrush x:Key="Button.Disabled.Background" Color="#FFF4F4F4"/>
+        <SolidColorBrush x:Key="Button.Disabled.Border" Color="#FFADB2B5"/>
+        <SolidColorBrush x:Key="Button.Disabled.Foreground" Color="#FF838383"/>
+        <Style x:Key="ButtonSlidStyle" TargetType="{x:Type Button}">
+            <Setter Property="FocusVisualStyle" Value="{StaticResource FocusVisual}"/>
+            <Setter Property="Background" Value="{StaticResource Button.Static.Background}"/>
+            <Setter Property="BorderBrush" Value="{StaticResource Button.Static.Border}"/>
+            <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="Padding" Value="1"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border x:Name="border1" BorderThickness="0,0.5,0,0" HorizontalAlignment="Stretch" Height="Auto" VerticalAlignment="Stretch" Width="Auto" BorderBrush="#FFDAD6D6" Background="#FF003665">
+                            <VisualStateManager.VisualStateGroups>
+                                <VisualStateGroup x:Name="CommonStates">
+                                    <VisualStateGroup.Transitions>
+                                        <VisualTransition GeneratedDuration="0:0:0.3" To="MouseOver"/>
+                                        <VisualTransition From="MouseOver" GeneratedDuration="0:0:0.3" To="Normal"/>
+                                    </VisualStateGroup.Transitions>
+                                    <VisualState x:Name="Normal"/>
+                                    <VisualState x:Name="MouseOver">
+                                        <Storyboard>
+                                            <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Panel.Background).(SolidColorBrush.Color)" Storyboard.TargetName="border1">
+                                                <EasingColorKeyFrame KeyTime="0" Value="#FF011F3A"/>
+                                            </ColorAnimationUsingKeyFrames>
+                                        </Storyboard>
+                                    </VisualState>
+                                    <VisualState x:Name="Pressed"/>
+                                    <VisualState x:Name="Disabled"/>
+                                </VisualStateGroup>
+                            </VisualStateManager.VisualStateGroups>
+                            <Grid x:Name="border" SnapsToDevicePixels="true" Margin="0,0,-2,-2">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="83*"/>
+                                    <ColumnDefinition Width="117*"/>
+                                </Grid.ColumnDefinitions>
+                                <ContentPresenter x:Name="contentPresenter" Focusable="False" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" Grid.ColumnSpan="1" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="0,17.906,0,17.907" Height="Auto" Width="Auto"/>
+                                <TextBlock HorizontalAlignment="Right" Height="Auto" TextWrapping="Wrap"  VerticalAlignment="Center" FontFamily="Segoe MDL2 Assets" Text="{TemplateBinding Tag}" FontSize="24" Width="Auto" Margin="0,11.636,12.475,17.636" Foreground="{TemplateBinding Foreground}"/>
+                            </Grid>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Style x:Key="ButtonControlStyle" TargetType="{x:Type Button}">
+            <Setter Property="FocusVisualStyle" Value="{StaticResource FocusVisual}"/>
+            <Setter Property="Background" Value="{StaticResource Button.Static.Background}"/>
+            <Setter Property="BorderBrush" Value="{StaticResource Button.Static.Border}"/>
+            <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="Padding" Value="1"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border x:Name="border" BorderBrush="{TemplateBinding BorderBrush}" SnapsToDevicePixels="true" Background="#FF0090CC">
+                            <VisualStateManager.VisualStateGroups>
+                                <VisualStateGroup x:Name="CommonStates">
+                                    <VisualStateGroup.Transitions>
+                                        <VisualTransition GeneratedDuration="0:0:0.2" To="MouseOver"/>
+                                        <VisualTransition From="MouseOver" GeneratedDuration="0:0:0.2" To="Normal"/>
+                                    </VisualStateGroup.Transitions>
+                                    <VisualState x:Name="Normal"/>
+                                    <VisualState x:Name="MouseOver">
+                                        <Storyboard>
+                                            <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Panel.Background).(SolidColorBrush.Color)" Storyboard.TargetName="border">
+                                                <EasingColorKeyFrame KeyTime="0" Value="#FF0D79A6"/>
+                                            </ColorAnimationUsingKeyFrames>
+                                            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[2].(RotateTransform.Angle)" Storyboard.TargetName="contentPresenter">
+                                                <EasingDoubleKeyFrame KeyTime="0" Value="90"/>
+                                            </DoubleAnimationUsingKeyFrames>
+                                        </Storyboard>
+                                    </VisualState>
+                                    <VisualState x:Name="Pressed"/>
+                                    <VisualState x:Name="Disabled"/>
+                                </VisualStateGroup>
+                            </VisualStateManager.VisualStateGroups>
+                            <ContentPresenter x:Name="contentPresenter" Focusable="False" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" RenderTransformOrigin="0.5,0.5">
+                                <ContentPresenter.RenderTransform>
+                                    <TransformGroup>
+                                        <ScaleTransform/>
+                                        <SkewTransform/>
+                                        <RotateTransform/>
+                                        <TranslateTransform/>
+                                    </TransformGroup>
+                                </ContentPresenter.RenderTransform>
+                            </ContentPresenter>
+                        </Border>
+
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Style x:Key="CardStyle" TargetType="{x:Type Border}">
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="#FFF9F9F9"/>
+                </Trigger>
+            </Style.Triggers>
+            <Setter Property="Background" Value="White"/>
+            <Setter Property="Effect">
+                <Setter.Value>
+                    <DropShadowEffect BlurRadius="20" ShadowDepth="9" Color="#FFEAEAEA"/>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Storyboard x:Key="OnMouseEnter1"/>
+        <Storyboard x:Key="OnMouseLeave1"/>
+        <Style x:Key="ButtonStyle1" TargetType="{x:Type Button}">
+            <Setter Property="FocusVisualStyle" Value="{StaticResource FocusVisual}"/>
+            <Setter Property="Background" Value="{StaticResource Button.Static.Background}"/>
+            <Setter Property="BorderBrush" Value="{StaticResource Button.Static.Border}"/>
+            <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="Padding" Value="1"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Canvas x:Name="border" SnapsToDevicePixels="true" Width="Auto" Background="#FF0C94CC">
+                            <VisualStateManager.VisualStateGroups>
+                                <VisualStateGroup x:Name="CommonStates">
+                                    <VisualStateGroup.Transitions>
+                                        <VisualTransition GeneratedDuration="0:0:0.1" To="MouseOver"/>
+                                        <VisualTransition From="MouseOver" GeneratedDuration="0:0:0.1" To="Normal"/>
+                                    </VisualStateGroup.Transitions>
+                                    <VisualState x:Name="Normal"/>
+                                    <VisualState x:Name="MouseOver">
+                                        <Storyboard>
+                                            <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Panel.Background).(SolidColorBrush.Color)" Storyboard.TargetName="border">
+                                                <EasingColorKeyFrame KeyTime="0" Value="#FF0A79A6"/>
+                                            </ColorAnimationUsingKeyFrames>
+                                            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[2].(RotateTransform.Angle)" Storyboard.TargetName="textBlock">
+                                                <EasingDoubleKeyFrame KeyTime="0" Value="14.681"/>
+                                            </DoubleAnimationUsingKeyFrames>
+                                            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(TextElement.FontSize)" Storyboard.TargetName="textBlock">
+                                                <EasingDoubleKeyFrame KeyTime="0" Value="20"/>
+                                            </DoubleAnimationUsingKeyFrames>
+                                            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Width)" Storyboard.TargetName="ellipse">
+                                                <EasingDoubleKeyFrame KeyTime="0" Value="25"/>
+                                            </DoubleAnimationUsingKeyFrames>
+                                            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Height)" Storyboard.TargetName="ellipse">
+                                                <EasingDoubleKeyFrame KeyTime="0" Value="25"/>
+                                            </DoubleAnimationUsingKeyFrames>
+                                            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)" Storyboard.TargetName="ellipse">
+                                                <EasingDoubleKeyFrame KeyTime="0" Value="1.08"/>
+                                            </DoubleAnimationUsingKeyFrames>
+                                            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)" Storyboard.TargetName="ellipse">
+                                                <EasingDoubleKeyFrame KeyTime="0" Value="1.16"/>
+                                            </DoubleAnimationUsingKeyFrames>
+                                            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="ellipse">
+                                                <EasingDoubleKeyFrame KeyTime="0" Value="-1"/>
+                                            </DoubleAnimationUsingKeyFrames>
+                                            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="ellipse">
+                                                <EasingDoubleKeyFrame KeyTime="0" Value="2"/>
+                                            </DoubleAnimationUsingKeyFrames>
+                                            <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(TextElement.Foreground).(SolidColorBrush.Color)" Storyboard.TargetName="textBlock">
+                                                <EasingColorKeyFrame KeyTime="0" Value="White"/>
+                                            </ColorAnimationUsingKeyFrames>
+                                        </Storyboard>
+                                    </VisualState>
+                                    <VisualState x:Name="Pressed"/>
+                                    <VisualState x:Name="Disabled"/>
+                                </VisualStateGroup>
+                            </VisualStateManager.VisualStateGroups>
+                            <ContentPresenter x:Name="contentPresenter" Focusable="False" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" Margin="0" Canvas.Left="15" Canvas.Top="17"/>
+                            <Ellipse x:Name="ellipse" Fill="#FFFD860E" Height="20" Canvas.Left="23" Canvas.Top="5.5" Width="20" RenderTransformOrigin="0.5,0.5">
+                                <Ellipse.RenderTransform>
+                                    <TransformGroup>
+                                        <ScaleTransform/>
+                                        <SkewTransform/>
+                                        <RotateTransform/>
+                                        <TranslateTransform/>
+                                    </TransformGroup>
+                                </Ellipse.RenderTransform>
+                            </Ellipse>
+                            <TextBlock x:Name="textBlock" Height="Auto" Canvas.Left="29" TextWrapping="Wrap" Text="{TemplateBinding Tag}" Canvas.Top="7.04" FontFamily="Segoe UI Semibold" FontSize="12" HorizontalAlignment="Center" VerticalAlignment="Center" RenderTransformOrigin="0.5,0.5">
+                                <TextBlock.RenderTransform>
+                                    <TransformGroup>
+                                        <ScaleTransform/>
+                                        <SkewTransform/>
+                                        <RotateTransform/>
+                                        <TranslateTransform/>
+                                    </TransformGroup>
+                                </TextBlock.RenderTransform>
+                            </TextBlock>
+                        </Canvas>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsDefaulted" Value="true"/>
+                            <Trigger Property="IsMouseOver" Value="true"/>
+                            <Trigger Property="IsPressed" Value="true"/>
+                            <Trigger Property="IsEnabled" Value="false">
+                                <Setter Property="TextElement.Foreground" TargetName="contentPresenter" Value="{StaticResource Button.Disabled.Foreground}"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Storyboard x:Key="OnClick1"/>
+        <Storyboard x:Key="OnGotFocus1"/>
+        <SolidColorBrush x:Key="TextBox.Static.Border" Color="#FFABAdB3"/>
+        <SolidColorBrush x:Key="TextBox.MouseOver.Border" Color="#FF7EB4EA"/>
+        <SolidColorBrush x:Key="TextBox.Focus.Border" Color="#FF569DE5"/>
+        <Style x:Key="SearchBoxStyle1" TargetType="{x:Type TextBox}">
+            <Setter Property="Background" Value="{DynamicResource {x:Static SystemColors.WindowBrushKey}}"/>
+            <Setter Property="BorderBrush" Value="{StaticResource TextBox.Static.Border}"/>
+            <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="KeyboardNavigation.TabNavigation" Value="None"/>
+            <Setter Property="HorizontalContentAlignment" Value="Left"/>
+            <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
+            <Setter Property="AllowDrop" Value="true"/>
+            <Setter Property="ScrollViewer.PanningMode" Value="VerticalFirst"/>
+            <Setter Property="Stylus.IsFlicksEnabled" Value="False"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type TextBox}">
+                        <Canvas x:Name="border" SnapsToDevicePixels="True" Background="{TemplateBinding Background}" RenderTransformOrigin="0.5,0.5">
+                            <Canvas.RenderTransform>
+                                <TransformGroup>
+                                    <ScaleTransform/>
+                                    <SkewTransform AngleX="0.868"/>
+                                    <RotateTransform/>
+                                    <TranslateTransform X="-0.235"/>
+                                </TransformGroup>
+                            </Canvas.RenderTransform>
+                            <ScrollViewer x:Name="PART_ContentHost" Focusable="false" HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Hidden" Height="Auto" Canvas.Left="48.325" Canvas.Top="14" Width="Auto" Foreground="{Binding Foreground, ElementName=textBlock}"/>
+                            <TextBlock x:Name="textBlock" TextWrapping="Wrap" Text="&#xE1A3;" Height="Auto" Width="Auto" FontFamily="Segoe MDL2 Assets" VerticalAlignment="Center" FontSize="20" Canvas.Left="20.325" Canvas.Top="15.5" HorizontalAlignment="Center" Foreground="#FFE0DDDD"/>
+                            <TextBlock x:Name="textBlock1" TextWrapping="Wrap" Text="Search..." Canvas.Left="48.325" Canvas.Top="16" Visibility="Hidden"/>
+                        </Canvas>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="Text" Value="">
+                                <Setter Property="Visibility" TargetName="textBlock1" Value="Visible"/>
+                            </Trigger>
+                            <Trigger Property="IsEnabled" Value="false"/>
+                            <Trigger Property="IsMouseOver" Value="true"/>
+                            <Trigger Property="IsKeyboardFocused" Value="true"/>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <MultiTrigger>
+                    <MultiTrigger.Conditions>
+                        <Condition Property="IsInactiveSelectionHighlightEnabled" Value="true"/>
+                        <Condition Property="IsSelectionActive" Value="false"/>
+                    </MultiTrigger.Conditions>
+                    <Setter Property="SelectionBrush" Value="{DynamicResource {x:Static SystemColors.InactiveSelectionHighlightBrushKey}}"/>
+                </MultiTrigger>
+            </Style.Triggers>
+        </Style>
+    </Window.Resources>
+
+    <Border Margin="10">
+        <Border.Effect>
+            <DropShadowEffect Color="#FF4F4F4F"
+                              Direction="270" BlurRadius="15" ShadowDepth="0" Opacity="0.5" />
+        </Border.Effect>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="43"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="200"/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+
+            <StackPanel Background="#FF003665" Grid.RowSpan="2">
+
+                <Label Content="savvy smile&#xD;&#xA;" Height="58" Width="173" FontSize="22" FontFamily="Arial Black" Foreground="#FFCFD0D5"/>
+                <Button Content="Home" HorizontalAlignment="Left" Height="51.773" Width="200" Style="{DynamicResource ButtonSlidStyle}" FontWeight="Bold" FontSize="14" Tag="&#xE10F;" Background="{x:Null}" Foreground="#FFDAD6D6" BorderBrush="{x:Null}"/>
+                <Button Content="Patients" HorizontalAlignment="Left" Height="51.773" Width="200" Style="{DynamicResource ButtonSlidStyle}" FontWeight="Bold" FontSize="14" Tag="&#xE125;" Background="{x:Null}" Foreground="#FFDAD6D6" BorderBrush="{x:Null}"/>
+                <Button Content="appointment" HorizontalAlignment="Left" Height="51.773" Width="200" Style="{DynamicResource ButtonSlidStyle}" FontWeight="Bold" FontSize="14" Tag="&#xE163;" Background="{x:Null}" Foreground="#FFDAD6D6" BorderBrush="{x:Null}"/>
+                <Button Content="Reports" HorizontalAlignment="Left" Height="51.773" Width="200" Style="{DynamicResource ButtonSlidStyle}" FontWeight="Bold" FontSize="14" Tag="&#xE2F6;" Background="{x:Null}" Foreground="#FFDAD6D6" BorderBrush="{x:Null}"/>
+                <Button Content="supplies" HorizontalAlignment="Left" Height="51.773" Width="200" Style="{DynamicResource ButtonSlidStyle}" FontWeight="Bold" FontSize="14" Tag="&#xE15E;" Background="{x:Null}" Foreground="#FFDAD6D6" BorderBrush="{x:Null}"/>
+
+
+
+
+            </StackPanel>
+
+            <Grid Grid.Column="1" Background="#FF0C94CC" MouseDown="Grid_MouseDown">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="375*"/>
+                    <ColumnDefinition Width="379*"/>
+                </Grid.ColumnDefinitions>
+                <StackPanel Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Right">
+                    <Button Content="&#xE711;" Width="49.699" HorizontalContentAlignment="Center" Background="#FF0C94CC" BorderBrush="{x:Null}" Style="{DynamicResource ButtonControlStyle}" FontFamily="Segoe MDL2 Assets" FontSize="24" Foreground="White" Click="close" Height="50" VerticalAlignment="Top"/>
+                </StackPanel>
+                <StackPanel Margin="0,0,88.492,0" Orientation="Horizontal">
+                    <Button x:Name="button" Content="&#xEDB3;" Style="{DynamicResource ButtonStyle1}" Background="#FF0C94CC" BorderBrush="{x:Null}" Foreground="#FFDEDDDD" FontFamily="Segoe MDL2 Assets" FontSize="20" Tag="8" Width="50" Padding="0" HorizontalAlignment="Left" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Height="50"/>
+                    <Button x:Name="button_Copy" Content="&#xEA8F;" Style="{DynamicResource ButtonStyle1}" Background="#FF0C94CC" BorderBrush="{x:Null}" Foreground="#FFDEDDDD" FontFamily="Segoe MDL2 Assets" FontSize="20" Tag="3" Width="50" Padding="0" HorizontalAlignment="Left" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Height="50"/>
+                    <TextBox TextWrapping="Wrap" Width="183" Style="{DynamicResource SearchBoxStyle1}" Foreground="#FFF7F7F7" Margin="0" HorizontalAlignment="Left" Padding="0,3,0,0" Background="#FF0E79A4" ClipToBounds="True"/>
+                </StackPanel>
+            </Grid>
+            <Grid Grid.Column="1" Grid.Row="1" Background="#FF0A415C">
+                <DataGrid x:Name="equipmentDataGrid" AutoGenerateColumns="False" Margin="10,48,147,32"
+       CanUserAddRows="False" CanUserDeleteRows="False" Grid.Column="1">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Equipment ID" Binding="{Binding EquipmentID}" />
+                        <DataGridTextColumn Header="Equipment Name" Binding="{Binding EquipmentName}" />
+                        <DataGridTextColumn Header="Amount "/>
+                        <!-- Add more columns as needed -->
+                    </DataGrid.Columns>
+                </DataGrid>
+
+                <!-- Equipment Management Panel -->
+                <StackPanel Orientation="Vertical" VerticalAlignment="Top" HorizontalAlignment="Right" Margin="0,10,10,0" Grid.Column="1" Height="308" Width="121">
+                    <!-- Add Equipment Section -->
+                    <StackPanel>
+                        <TextBlock Text="Add Equipment" FontWeight="Bold" Margin="0,0,0,5"/>
+                        <TextBox x:Name="txtEquipmentID" Margin="0,0,0,5"/>
+                        <TextBlock Text="Equipment ID" Opacity="0.5" FontStyle="Italic" IsEnabled="False" Foreground="#FF160101"/>
+                        <TextBox x:Name="txtEquipmentName" Margin="0,0,0,5"/>
+                        <TextBlock Text="Equipment Name" Opacity="0.5" FontStyle="Italic"/>
+                        <!-- Add more input fields for additional information -->
+                        <Button Content="Add Equipment" Click="AddEquipment_Click" Width="100" Margin="0,0,0,5"/>
+                    </StackPanel>
+
+                    <!-- Delete Equipment Section -->
+                    <StackPanel>
+                        <TextBlock Text="Delete Equipment" FontWeight="Bold" Margin="0,10,0,5"/>
+                        <TextBox x:Name="txtDeleteEquipmentID" Margin="0,0,0,5"/>
+                        <TextBlock Text="Equipment ID to Delete" Opacity="0.5" FontStyle="Italic"/>
+                        <Button Content="Delete Equipment" Click="DeleteEquipment_Click" Width="100" Margin="0,0,0,5"/>
+                    </StackPanel>
+
+                    <!-- Search Section -->
+                    <StackPanel>
+                        <TextBlock Text="Search" FontWeight="Bold" Margin="0,10,0,5"/>
+                        <TextBox x:Name="txtSearch" Margin="0,0,0,5"/>
+                        <TextBlock Text="Search Equipment" Opacity="0.5" FontStyle="Italic"/>
+                        <Button Content="Search" Click="Search_Click" Width="100"/>
+                    </StackPanel>
+                </StackPanel>
+                <Label Grid.Column="1" Content="dental  Supplies" HorizontalAlignment="Left" Height="33" Margin="190,10,0,0" VerticalAlignment="Top" Width="132" FontFamily="Papyrus" FontSize="14" FontWeight="Bold"/>
+                <Label Grid.Column="1" Content="022               dental drill                  3" HorizontalAlignment="Left" Height="30" Margin="20,87,0,0" VerticalAlignment="Top" Width="224"/>
+                <Label Grid.Column="1" Content="023l                retractors                  10" HorizontalAlignment="Left" Height="25" Margin="20,149,0,0" VerticalAlignment="Top" Width="224"/>
+            </Grid>
+
+        </Grid>
+    </Border>
+</Window>
